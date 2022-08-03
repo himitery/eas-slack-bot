@@ -10,7 +10,7 @@ import (
 
 func main() {
 	if godotenv.Load("env/.env") != nil {
-		log.Fatalln("environment variables not set")
+		log.Println("Failed to load env/.env")
 	}
 
 	port := func(port string) string {
