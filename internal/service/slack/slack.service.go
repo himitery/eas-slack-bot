@@ -71,7 +71,7 @@ func SendMessage(message SendMessageRequest) {
 		os.Getenv("SLACK_CHANNEL_NAME"),
 		slack.MsgOptionAttachments(attachment),
 	); err != nil {
-		log.Fatalln("Failed to post slack message: ", err.Error())
+		log.Println("Failed to post slack message: ", err.Error())
 		return
 	}
 }
