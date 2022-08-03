@@ -1,0 +1,8 @@
+### Jetbrains ###
+.idea
+
+### OS ###
+.DS_Store
+
+### env ###
+env/.env
