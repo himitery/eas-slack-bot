@@ -10,7 +10,7 @@ type SubmitResult struct {
 	Platform         string `json:"platform"`
 	Status           string `json:"status"`
 	SubmissionInfo   struct {
-		Error struct {
+		Error *struct {
 			Message   string `json:"message"`
 			ErrorCode string `json:"errorCode"`
 		} `json:"error"`
