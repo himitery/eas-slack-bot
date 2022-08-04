@@ -53,13 +53,17 @@ func SendMessage(message SendMessageRequest) {
 		}
 	}(message.Type)
 
-	info := func(messageType string) string {
+	info := func(messageType string, status string) string {
 		if messageType == "build" {
-			return fmt.Sprintf("SDK Version: %s\nBuild Profile: %s\nRelease Channel: %s\nBuild Url: %s\n", passNilValue(message.SdkVersion), passNilValue(message.BuildProfile), passNilValue(message.ReleaseChannel), passNilValue(message.BuildUrl))
+			infoMessage := fmt.Sprintf("SDK Version: %s\nBuild Profile: %s\n", passNilValue(message.SdkVersion), passNilValue(message.BuildProfile))
+			if status == "build" {
+				infoMessage = infoMessage + fmt.Sprintf("Release Channel: %s\nBuild Url: %s\n", passNilValue(message.ReleaseChannel), passNilValue(message.BuildUrl))
+			}
+			return infoMessage
 		} else {
 			return ""
 		}
-	}(message.Type)
+	}(message.Type, message.Status)
 
 	attachment := slack.Attachment{
 		Pretext:    title,
